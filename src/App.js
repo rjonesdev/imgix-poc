@@ -65,6 +65,23 @@ function App() {
               }
             }
           />
+          <h3>Width set to 400px and color filter applied</h3>
+          <ImgixPicture 
+            containerClasses='PagePhoto'
+            imgName='setup-platform-bed'
+            imgExtension='jpeg'
+            altText='Multiple images across breakpoints'
+            useLazyLoad={false}
+            hasHoverImage={false}
+            hasBreakpointImages={false}
+            targetedDevices={[]}
+            imgixParams={
+              {
+                w: 400,
+                monochrome: "0032FF",
+              }
+            }
+          />
         <hr />
         <h2>Ability to extend this to hover images</h2>
         <img
