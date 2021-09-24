@@ -1,0 +1,187 @@
+/* ==========================================================================
+   #Visibility
+   ========================================================================== */
+
+/// ### Hide Elements
+///
+/// The `u-hidden` utility hides an elment. However, it has a few different options depending on what you append to the class name. 
+///
+/// #### How hidden is it?
+/// You can control whether it's hidden from just the user and NOT screen readers with `u-hiddenVisually`, or you can hide it from BOTH the user and screen readers with `u-hidden`.
+///
+/// #### When is it hidden?
+/// You have the option to define if it's hidden from X-breakpoint and wider (min-width), or X-breakpoint and narrower (max-width).
+///
+/// For min-width, meaning from X breakpoint and up, you will append `--{breakpoint}-up`. If you you need it to apply a max-width, you will use `--{breakpoint}-down`. *The {breakpoint} options follow that of the [breakpoint map](settings-layout.html#variable--breakpoints)
+///
+/// @example html
+/// <div class="u-hidden--md-down">Bennett The Dog is only seen above the 'md' breakpoint</div>
+/// <div class="u-hidden--md-up">Pasha The Dog is only seen below the 'md' breakpoint</div>
+/// @group utils-visibility
+
+
+// Hide visually only (accessible to screen readers and js hooks)
+.u-hiddenVisually {
+  @include hidden-visually();
+}
+
+// hide visually and from all of the things
+.u-hidden {
+  display: none !important;
+}
+
+.u-overflow-hidden { 
+  overflow: hidden;
+}
+
+// TODO: extend all hidden-smwith mixin or function or @each
+@include media-query-down(xs) {
+  .u-hiddenVisually--sm-down {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--sm-down {
+    display: none !important;
+  }
+}
+
+@include media-query-up(sm) {
+  .u-hiddenVisually--sm-up {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--sm-up {
+    display: none !important;
+  }
+}
+
+
+
+@include media-query-down(sm) {
+  .u-hiddenVisually--md-down {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--md-down {
+    display: none !important;
+  }
+}
+
+@include media-query-up(md) {
+  .u-hiddenVisually--md-up {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--md-up {
+    display: none !important;
+  }
+}
+
+@include media-query-down(md) {
+  .u-hiddenVisually--lg-down {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--lg-down {
+    display: none !important;
+  }
+}
+
+@include media-query-up(lg) {
+  .u-hiddenVisually--lg-up {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--lg-up {
+    display: none !important;
+  }
+}
+
+@include media-query-down(lg) {
+  .u-hiddenVisually--xl-down {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--xl-down {
+    display: none !important;
+  }
+}
+
+
+@include media-query-up(xl) {
+  .u-hiddenVisually--xl-up {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--xl-up {
+    display: none !important;
+  }
+}
+
+@include media-query-down(xl) {
+  .u-hiddenVisually--2xl-down {
+    @include hidden-visually();
+  }
+  
+  // hide visually and from all of the things
+  .u-hidden--2xl-down {
+    display: none !important;
+  }
+}
+
+
+/// ### Overflow Elements
+///
+/// The `u-overflow` utility handles the overflow of an element. It too has a few different options depending on what you append to the class name. 
+///
+/// #### Which direction overflows?
+/// You have the option to define the direction of the oveflow with a camelCase addition. By default, it will overflow both x and y, `overflow`, or you overflow just x, overflowX, or just Y, `overflowY`.
+///
+/// #### How does it overflow?
+/// The modifier will be the rule definition (e.g. `u-overflowX--hidden`); you can choose from these options:
+/// - auto
+/// - visible
+/// - hidden
+/// - scroll
+///
+/// @example html
+/// <div class="u-overflowX--hidden" style="width: 210px; height: 2rem;">The rest of this content is hidden ... You can't see it anymore.</div>
+/// @group utils-visibility
+
+$overflowMap: (
+  1: 'overflow',
+  2: 'overflowX',
+  3: 'overflowY'
+);
+
+@each $val in $overflowMap {
+  $namespace: nth($val, 2);
+
+  .u-#{$namespace} {
+    &--auto {
+      overflow: auto;
+    }
+
+    &--visible {
+      overflow: visible;
+    }
+
+    &--hidden {
+      overflow: hidden;
+    }
+
+    &--scroll {
+      overflow: scroll;
+    }
+  }
+}
+
+
